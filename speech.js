@@ -1,12 +1,13 @@
 let textarea = document.querySelector('#textarea');
 let voices = document.querySelector('#voices');
-let button = document.querySelector('#button');
+let playPauseButton = document.querySelector('#playPauseButton');
+let stopButton = document.querySelector('#stopButton');
 let selectedVoice = 0;
+let utterance = null;
 
 function populateVoicesList() {
   let voicesList = window.speechSynthesis.getVoices();
-  console.log(voicesList);
-  voices.innerHTML = ''; // Limpa a lista de vozes antes de preenchê-la novamente
+  voices.innerHTML = '';
 
   for (let i = 0; i < voicesList.length; i++) {
     let optionEl = document.createElement('option');
@@ -16,23 +17,49 @@ function populateVoicesList() {
   }
 }
 
-function speakText() {
-  if (textarea.value !== '') {
-    let voicesList = window.speechSynthesis.getVoices();
-    let ut = new SpeechSynthesisUtterance(textarea.value);
-    ut.voice = voicesList[selectedVoice];
-    window.speechSynthesis.speak(ut);
+function togglePlayPause() {
+  if (utterance !== null) {
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      playPauseButton.innerHTML = "<i class='bi bi-pause'></i>";
+    } else if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.pause();
+      playPauseButton.innerHTML = "<i class='bi bi-play'></i>";
+    }
+  } else {
+    speakText();
   }
 }
 
-button.addEventListener('click', speakText);
+function speakText() {
+  if (textarea.value !== '') {
+    let voicesList = window.speechSynthesis.getVoices();
+    utterance = new SpeechSynthesisUtterance(textarea.value);
+    utterance.voice = voicesList[selectedVoice];
+    window.speechSynthesis.speak(utterance);
+    playPauseButton.innerHTML = "<i class='bi bi-pause'></i>";
+  }
+}
+
+function stopSpeech() {
+  if (utterance !== null) {
+    window.speechSynthesis.cancel();
+    utterance = null;
+    playPauseButton.innerHTML = "<i class='bi bi-play'></i>";
+  }
+}
+
+playPauseButton.addEventListener('click', togglePlayPause);
+stopButton.addEventListener('click', stopSpeech);
 
 voices.addEventListener('change', () => {
   selectedVoice = parseInt(voices.value);
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Aguarda o evento 'DOMContentLoaded' para garantir que a página esteja completamente carregada
-  window.speechSynthesis.addEventListener('voiceschanged', populateVoicesList);
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.addEventListener('voiceschanged', populateVoicesList);
+  } else {
+    console.log('API de síntese de fala não suportada');
+  }
 });
-
