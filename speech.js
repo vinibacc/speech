@@ -4,6 +4,30 @@ let playPauseButton = document.querySelector('#playPauseButton');
 let stopButton = document.querySelector('#stopButton');
 let selectedVoice = 0;
 let utterance = null;
+const header = document.querySelector('#header');
+const toggleButton = document.querySelector('#toggleButton');
+
+const main = document.querySelector('main');
+
+toggleButton.addEventListener('click', () => {
+  textarea.classList.toggle('expanded');
+  header.classList.toggle('hidden');
+  voices.classList.toggle('hidden');
+  toggleButton.innerHTML = textarea.classList.contains('expanded') ?
+  '<i class="bi bi-arrows-angle-contract"></i>' :
+  '<i class="bi bi-arrows-angle-expand"></i>';
+
+
+  if (textarea.classList.contains('expanded')) {
+    document.body.style.overflow = 'hidden'; // Impede a rolagem da página quando o textarea estiver expandido
+    main.classList.remove('container', 'mt-5');
+    main.classList.add('container-fluid');
+  } else {
+    main.classList.remove('container-fluid');
+    main.classList.add('container', 'mt-5');
+    document.body.style.overflow = ''; // Habilita a rolagem da página novamente
+  }
+});
 
 function populateVoicesList() {
   let voicesList = window.speechSynthesis.getVoices();
@@ -24,7 +48,7 @@ function togglePlayPause() {
       playPauseButton.innerHTML = "<i class='bi bi-pause'></i>";
     } else if (window.speechSynthesis.speaking) {
       window.speechSynthesis.pause();
-      playPauseButton.innerHTML = "<i class='bi bi-play'></i>";
+      playPauseButton.innerHTML = "<i class='bi bi-play-fill'></i>";
     }
   } else {
     speakText();
@@ -45,7 +69,7 @@ function stopSpeech() {
   if (utterance !== null) {
     window.speechSynthesis.cancel();
     utterance = null;
-    playPauseButton.innerHTML = "<i class='bi bi-play'></i>";
+    playPauseButton.innerHTML = "<i class='bi bi-play-fill'></i>";
   }
 }
 
