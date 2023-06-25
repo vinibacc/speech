@@ -37,10 +37,12 @@ function populateVoicesList() {
   voices.innerHTML = '';
 
   for (let i = 0; i < voicesList.length; i++) {
-    let optionEl = document.createElement('option');
-    optionEl.setAttribute('value', i);
-    optionEl.innerText = voicesList[i].name;
-    voices.appendChild(optionEl);
+    if (voicesList[i].lang.startsWith('pt-BR')) {
+      let optionEl = document.createElement('option');
+      optionEl.setAttribute('value', i);
+      optionEl.innerText = voicesList[i].name;
+      voices.appendChild(optionEl);
+    }
   }
 }
 
