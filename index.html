@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vocalease</title>
+    <title>Vocaleasy</title>
     <meta name="description" content="Leitor de texto desenvolvido por Vinicius Ugoski Bacchieri">
     <meta author="Vinicius Ugoski Bacchieri">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,94 +16,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <style>
-        .fonte-1 {
-            font-family: 'Dancing Script', cursive;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        .fonte-2 {
-            font-family: 'Roboto Flex', sans-serif;
-        }
-
-        .tamanho-titulo {
-            font-size: 8rem;
-        }
-
-        .cor-titulo {
-            color: #add8e6;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .circle-btn {
-            border-radius: 20em !important;
-            padding: 0;
-        }
-
-        textarea {
-            height: 100px;
-            /* Altura inicial do textarea */
-            transition: height 0.3s ease;
-            /* Transição suave da altura */
-        }
-
-        textarea.expanded {
-            height: 80vh;
-            /* Altura expandida do textarea */
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .f-right {
-            float: right;
-        }
-    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 fonte-1">Vocal<span class='cor-titulo'>ease</span></span>
+            <span class="navbar-brand mb-0 h1 fonte-1">Vocal<span class='cor-titulo'>easy</span></span>
         </div>
     </nav>
     <div id="header" class="header mb-3">
-        <h1 class="fonte-1 tamanho-titulo text-center">Vocal<span class='cor-titulo'>ease</span></h1>
+        <h1 class="fonte-1 tamanho-titulo text-center">Vocal<span class='cor-titulo'>easy</span></h1>
         <h2 class="text-center mt-5 fonte-2 fs-3">Leitor de Texto</h2>
         <h4 class="text-center fonte-2">Por: <a class="cor-titulo"
                 href="https://www.linkedin.com/in/vinicius-ugoski-bacchieri/" target="_blank">Vinicius Ugoski
                 Bacchieri</a></h4>
     </div>
-    < <br>
-        <main class="container">
-            <div class="text-center fs-1">
-                <button type="button" id="playPauseButton" class="btn btn-dark fs-2">
-                    <i class="bi bi-play-fill"></i>
-                </button>
-                <button type="button" id="stopButton" class="btn btn-dark fs-2">
-                    <i class="bi bi-stop-fill"></i>
-                </button>
-            </div>
-            <br>
+    <br>
+    <main class="container">
+        <div class="text-center fs-1">
+            <button type="button" id="playPauseButton" class="btn btn-dark fs-2">
+                <i class="bi bi-play-fill"></i>
+            </button>
+            <button type="button" id="stopButton" class="btn btn-dark fs-2">
+                <i class="bi bi-stop-fill"></i>
+            </button>
+        </div>
+        <br>
 
-            <button id="toggleButton" type="button" class="btn btn-secondary f-right"><i class="bi bi-arrows-angle-expand"></i></button>
-
-
-            <textarea id="textarea" class="form-control" rows="10"></textarea>
-            <br>
-            <select id="voices" class="form-select"></select>
-            <br>
+        <button id="toggleButton" type="button" class="btn btn-secondary f-right"><i
+                class="bi bi-arrows-angle-expand"></i></button>
 
 
+        <textarea id="textarea" class="form-control" rows="10"></textarea>
+        <br>
+        <select id="voices" class="form-select"></select>
+        <br>
 
-        </main>
-        <script src="speech.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-            </script>
+
+
+    </main>
+    <script src="speech.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>

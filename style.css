@@ -1,0 +1,44 @@
+.fonte-1 {
+    font-family: 'Dancing Script', cursive;
+}
+
+.fonte-2 {
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+.tamanho-titulo {
+    font-size: 8rem;
+}
+
+.cor-titulo {
+    color: #add8e6;
+}
+
+a {
+    text-decoration: none;
+}
+
+.circle-btn {
+    border-radius: 20em !important;
+    padding: 0;
+}
+
+textarea {
+    height: 100px;
+    /* Altura inicial do textarea */
+    transition: height 0.3s ease;
+    /* Transição suave da altura */
+}
+
+textarea.expanded {
+    height: 80vh;
+    /* Altura expandida do textarea */
+}
+
+.hidden {
+    display: none;
+}
+
+.f-right {
+    float: right;
+}
